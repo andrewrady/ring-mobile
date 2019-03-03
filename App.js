@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, ActivityIndicator, Text, View  } from 'react-native';
+import { StyleSheet, ActivityIndicator, Text, View  } from 'react-native';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -11,7 +11,6 @@ export default class App extends React.Component {
     return fetch('https://guarded-earth-10858.herokuapp.com/rings')
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson)
         this.setState({
           isLoading: false,
           dataSource: responseJson
@@ -40,23 +39,23 @@ export default class App extends React.Component {
     }
 
     return(
-      <View style={{flex: 1, paddingTop:20}}>
+      <View style={styles}>
       <Text>Tournaments</Text>
-        <FlatList
-          data={this.state.dataSource}
-          renderItem={({item}) => <Text>{item.title}, {item.releaseYear}</Text>}
-          keyExtractor={({id}, index) => id}
-        />
+      {
+          this.state.dataSource.map((r) => {
+              return (<Text>{r.RingNumber}</Text>);
+          })
+      }
       </View>
     );
   }
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
