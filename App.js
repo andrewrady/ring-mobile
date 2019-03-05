@@ -42,13 +42,18 @@ export default class App extends React.Component {
 
     return(
       <View style={styles.container}>
-      {
-        this.state.dataSource.map((ring, key) => {
-            return(
-              <Ring key={key} ring={ring}></Ring>
-            );
-        })
-      }
+        <View style={styles.header}>
+          <Text style={styles.white}>Ring Scheduler</Text>
+        </View>
+        <View style={styles.ring}>
+          {
+            this.state.dataSource.map((ring, key) => {
+                return(
+                  <Ring key={key} ring={ring}></Ring>
+                );
+            })
+          }
+        </View>
       </View>
     );
   }
@@ -57,8 +62,21 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'column'
   },
+  header: {
+    flex: 1,
+    backgroundColor: '#50aaf4',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  white: {
+    flex: 1,
+    paddingTop: 40,
+    fontSize: 30,
+    color: '#fff'
+  },
+  ring: {
+    flex: 9
+  }
 });
