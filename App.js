@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, ActivityIndicator, Text, View  } from 'react-native';
+import { StyleSheet, ActivityIndicator, Text, View } from 'react-native';
+
+import Ring from './src/ring.js'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -39,12 +41,13 @@ export default class App extends React.Component {
     }
 
     return(
-      <View style={styles}>
-      <Text>Tournaments</Text>
+      <View style={styles.container}>
       {
-          this.state.dataSource.map((r) => {
-              return (<Text>{r.RingNumber}</Text>);
-          })
+        this.state.dataSource.map((ring, key) => {
+            return(
+              <Ring key={key} ring={ring}></Ring>
+            );
+        })
       }
       </View>
     );
