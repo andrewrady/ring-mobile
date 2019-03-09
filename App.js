@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, ActivityIndicator, Text, View } from 'react-native';
+import { Container, Header, Body, Title, Content, List} from 'native-base';
 
 import Ring from './src/ring.js'
 
@@ -41,20 +42,26 @@ export default class App extends React.Component {
     }
 
     return(
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.white}>Ring Scheduler</Text>
-        </View>
-        <View style={styles.ring}>
-          {
-            this.state.dataSource.map((ring, key) => {
-                return(
-                  <Ring key={key} ring={ring}></Ring>
-                );
-            })
-          }
-        </View>
-      </View>
+      <Container>
+        <Header>
+          <Body>
+            <Title>Rings</Title>
+          </Body>
+        </Header>
+        <Content>
+          <List>
+            {
+              this.state.dataSource.map((ring, key) => {
+                  return(
+                    <Ring key={key} ring={ring}></Ring>
+                  );
+              })
+            }
+          </List>
+          
+        </Content>
+      </Container>
+          
     );
   }
 }

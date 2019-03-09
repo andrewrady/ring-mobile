@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Body, ListItem, Left, Right, Text } from 'native-base';
 
 class Ring extends Component {
   render() {
     return (
-      <View style={styles.ringContainer}>
-        <Text style={styles.ring}>{ this.props.ring.RingNumber }</Text>
-        <Text style={styles.ring}>{ this.props.ring.Age } </Text>
-        <Text style={styles.ring}>{ this.props.ring.Rank }</Text>
-        <Text style={styles.ring}>{ this.props.ring.Division }</Text>
-        <Text style={styles.ring}>{ this.props.ring.Gender }</Text>
-      </View>
+      <ListItem>
+        <Left>
+           <Text>{ this.props.ring.RingNumber }</Text>
+        </Left>
+        <Body>
+          <Text>{ this.props.ring.Age }</Text>
+          <Text note>{ this.props.ring.Rank }</Text>
+          <Text note>{ this.props.ring.Division }</Text>
+        </Body>
+        <Right>
+          <Text note>{ this.props.ring.Gender }</Text>
+        </Right>
+      </ListItem>
     )
   }
 }
