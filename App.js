@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, ActivityIndicator, Text, View } from 'react-native';
-import { Container, Header, Body, Title, Content, List} from 'native-base';
+import { Container, Header, Body, Title, Content, List, Tab, Tabs } from 'native-base';
 
 import Ring from './src/ring.js'
 
@@ -43,23 +43,33 @@ export default class App extends React.Component {
 
     return(
       <Container>
-        <Header>
+        <Header hasTabs>
           <Body>
             <Title>Rings</Title>
           </Body>
         </Header>
-        <Content>
-          <List>
-            {
-              this.state.dataSource.map((ring, key) => {
-                  return(
-                    <Ring key={key} ring={ring}></Ring>
-                  );
-              })
-            }
-          </List>
-          
-        </Content>
+        <Tabs>
+          <Tab heading="Active">
+            <Content>
+              <List>
+                {
+                  this.state.dataSource.map((ring, key) => {
+                      return(
+                        <Ring key={key} ring={ring}></Ring>
+                      );
+                  })
+                }
+              </List>
+            </Content>
+          </Tab>
+          <Tab heading="Upcoming">
+            <Content>
+              <Text>Nothing</Text>
+            </Content>
+          </Tab>
+
+        </Tabs>
+        
       </Container>
           
     );
