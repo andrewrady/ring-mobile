@@ -1,8 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Text, Content, List, Tab, Tabs } from 'native-base';
-
 import Ring from './ring.js'
-
 
 class BodyContent extends Component {
   render() {

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { Body, ListItem, Left, Right, Text } from 'native-base';
+import { StyleSheet } from 'react-native';
+import { Body, ListItem, Left, Right, Text, Thumbnail } from 'native-base';
 
 class Ring extends Component {
   render() {
     return (
-      <ListItem>
+      <ListItem avatar>
         <Left>
-           <Text>{ this.props.ring.RingNumber }</Text>
+           <Thumbnail 
+            style={styles.image} 
+            source={ require('../assets/number-icon-1.png')}>
+          </Thumbnail>
         </Left>
         <Body>
           <Text>{ this.props.ring.Age }</Text>
@@ -20,5 +24,13 @@ class Ring extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  image: {
+    height: 40,
+    width: 40,
+    borderRadius: 40/2
+  }
+})
 
 export default Ring;

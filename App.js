@@ -1,6 +1,5 @@
 import React from 'react';
-import { ActivityIndicator,  View } from 'react-native';
-import { Container, Header, Body, Title} from 'native-base';
+import { Container, Header, Body, Title, Content, Spinner } from 'native-base';
 
 import BodyContent from './src/content.js';
 
@@ -30,9 +29,16 @@ export default class App extends React.Component {
   render() {
     if(this.state.isLoading){
       return(
-        <View style={{flex: 1, padding: 20}}>
-          <ActivityIndicator/>
-        </View>
+        <Container>
+          <Header>
+            <Body>
+              <Title>Rings</Title>
+            </Body>
+          </Header>
+          <Content>
+            <Spinner color="blue"></Spinner>
+          </Content>
+        </Container>
       )
     }
 
