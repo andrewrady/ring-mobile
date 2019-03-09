@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, ActivityIndicator, Text, View } from 'react-native';
-import { Container, Header, Body, Title, Content, List, Tab, Tabs } from 'native-base';
+import { ActivityIndicator,  View } from 'react-native';
+import { Container, Header, Body, Title} from 'native-base';
 
-import Ring from './src/ring.js'
+import BodyContent from './src/content.js';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,7 +16,8 @@ export default class App extends React.Component {
       .then((responseJson) => {
         this.setState({
           isLoading: false,
-          dataSource: responseJson
+          activeRings: responseJson.filter(x => x.Status),
+          upcomingRings: responseJson.filter(x => !x.Status)
         }, function() {
 
         });
@@ -35,12 +36,6 @@ export default class App extends React.Component {
       )
     }
 
-    if(!this.state.dataSource.length) {
-      return(
-        <Text>No Rings are listed</Text>
-      )
-    }
-
     return(
       <Container>
         <Header hasTabs>
@@ -48,52 +43,11 @@ export default class App extends React.Component {
             <Title>Rings</Title>
           </Body>
         </Header>
-        <Tabs>
-          <Tab heading="Active">
-            <Content>
-              <List>
-                {
-                  this.state.dataSource.map((ring, key) => {
-                      return(
-                        <Ring key={key} ring={ring}></Ring>
-                      );
-                  })
-                }
-              </List>
-            </Content>
-          </Tab>
-          <Tab heading="Upcoming">
-            <Content>
-              <Text>Nothing</Text>
-            </Content>
-          </Tab>
-
-        </Tabs>
-        
+        <BodyContent 
+          activeRings={this.state.activeRings}
+          upcomingRings={this.state.upcomingRings}>
+        </BodyContent>
       </Container>
-          
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column'
-  },
-  header: {
-    flex: 1,
-    backgroundColor: '#50aaf4',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  white: {
-    flex: 1,
-    paddingTop: 40,
-    fontSize: 30,
-    color: '#fff'
-  },
-  ring: {
-    flex: 9
-  }
-});

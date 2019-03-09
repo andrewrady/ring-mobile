@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
 import { Body, ListItem, Left, Right, Text } from 'native-base';
 
 class Ring extends Component {
@@ -21,18 +20,5 @@ class Ring extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  ringContainer: {
-    flex: 1,
-    alignSelf: 'stretch',
-    flexDirection: 'row'
-  },
-  ring: {
-    flex: 1,
-    alignSelf: 'stretch',
-    fontSize: 15,
-  }
-})
 
 export default Ring;
