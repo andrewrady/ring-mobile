@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import { Body, ListItem, Left, Right, Text, Thumbnail } from 'native-base';
+import image from './ring-images.js';
 
 class Ring extends Component {
   render() {
@@ -9,9 +10,9 @@ class Ring extends Component {
         <Left>
            <Thumbnail 
             style={styles.image} 
-            source={ require('../assets/number-icon-1.png')}>
-          </Thumbnail>
-        </Left>
+            source={image[this.props.ring.RingNumber]}>
+           </Thumbnail>
+        </Left> 
         <Body>
           <Text>{ this.props.ring.Age }</Text>
           <Text note>{ this.props.ring.Rank }</Text>
