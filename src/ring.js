@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Body, ListItem, Left, Right, Text, Thumbnail } from 'native-base';
 import image from './ring-images.js';
 
@@ -14,8 +14,8 @@ class Ring extends Component {
            </Thumbnail>
         </Left> 
         <Body>
-          <Text>{ this.props.ring.Age }</Text>
-          <Text note>{ this.props.ring.Rank }</Text>
+          <Text>{ this.props.ring.Rank }</Text>
+          <Text note>{  this.props.ring.Age}</Text>
           <Text note>{ this.props.ring.Division }</Text>
         </Body>
         <Right>

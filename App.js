@@ -6,10 +6,10 @@ import BodyContent from './src/content.js';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoading: true }
+    this.state = { isLoading: true, test: '' }
   }
 
-  componentDidMount() {
+  getRings = () => {
     return fetch('https://guarded-earth-10858.herokuapp.com/rings')
       .then((response) => response.json())
       .then((responseJson) => {
@@ -24,6 +24,10 @@ export default class App extends React.Component {
       .catch(error => {
         console.log(error)
       })
+  }
+
+  componentDidMount() {
+    this.getRings();
   }
 
   render() {
@@ -50,6 +54,7 @@ export default class App extends React.Component {
           </Body>
         </Header>
         <BodyContent 
+          onChange={this.getRings}
           activeRings={this.state.activeRings}
           upcomingRings={this.state.upcomingRings}>
         </BodyContent>
