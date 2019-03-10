@@ -1,12 +1,11 @@
 import React from 'react';
 import { Container, Header, Body, Title, Content, Spinner } from 'native-base';
-
 import BodyContent from './src/content.js';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoading: true, test: '' }
+    this.state = { isLoading: true }
   }
 
   getRings = () => {
@@ -17,12 +16,10 @@ export default class App extends React.Component {
           isLoading: false,
           activeRings: responseJson.filter(x => x.Status),
           upcomingRings: responseJson.filter(x => !x.Status)
-        }, function() {
-
         });
       })
       .catch(error => {
-        console.log(error)
+        console.log(error);
       })
   }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { RefreshControl } from 'react-native';
+import { RefreshControl, StyleSheet } from 'react-native';
 import { Text, Content, List, Tab, Tabs } from 'native-base';
 import Ring from './ring.js'
 
@@ -36,13 +36,15 @@ class BodyContent extends Component {
                     );
                 }) 
               :
-                <Text>There is no active rings</Text>
+                <Text style={styles.centeredText}>There is no active rings</Text>
             }
           </List>
         </Content>
       </Tab>
       <Tab heading="Upcoming">
-        <Content>
+        <Content refreshControl={<RefreshControl 
+          refreshing={this.state.refreshing}
+          onRefresh={this._onRefresh}/>}>
           <List>
             {
               this.props.upcomingRings.length 
@@ -53,7 +55,7 @@ class BodyContent extends Component {
                     );
                 }) 
               :
-                <Text>There is no upcoming rings</Text>
+                <Text style={styles.centeredText}>There is no upcoming rings</Text>
             }
           </List>
         </Content>
@@ -63,5 +65,13 @@ class BodyContent extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  centeredText: {
+    textAlign: 'center',
+    marginTop: 215,
+    fontSize: 25
+  }
+})
 
 export default BodyContent;
